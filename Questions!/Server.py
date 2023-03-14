@@ -11,8 +11,8 @@ Se asigna el host y puerto al servidor en el que vamos a trabajar
 """
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-host = '192.168.0.13'
-port = 1237
+host = '192.168.34.235'
+port = 8000
 """"
 Vinculamos el objeto de socket del servidor a una dirección IP y un número de puerto específicos
 ponemos el socket del servidor en modo de escucha para aceptar conexiones entrantes de los clientes.
@@ -25,7 +25,7 @@ La función está diseñada para manejar la comunicación entre el servidor y un
 
 el bucle while True que se ejecuta continuamente mientras el cliente esté conectado al servidor
 """
-def handle_client(client_socket):
+def handle_client(client_socket,address):
     while True:
         try:
             data = client_socket.recv(1024)  #Se reciben los datos del cliente
@@ -48,5 +48,5 @@ def handle_client(client_socket):
 while True:
     print("Escuchando")
     client_socket, address = server_socket.accept()
-    client_thread = threading.Thread(target=handle_client, args=(client_socket))
+    client_thread = threading.Thread(target=handle_client, args=(client_socket,address))
     client_thread.start()

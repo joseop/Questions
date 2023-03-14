@@ -3,9 +3,9 @@ import socket
 #Importamos la libreria Socket y definimos el metodo iniciar
 #Este metodo sirve para instancia un objeto cliente y realizar la coneccion con el servidor
 #Asignamos el host y puerto del servidor y procedemos a hacer la coneccion
+host = '192.168.34.235'
+port = 8000
 def iniciar():
-    host = '192.168.0.13'
-    port = 1237
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((host, port))
     return client_socket
